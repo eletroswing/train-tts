@@ -22,7 +22,7 @@ output_path = "out"
 # Set LJSpeech as our target dataset and define its path.
 # You can also use a simple Dict to define the dataset and pass it to your custom formatter.
 dataset_config = BaseDatasetConfig(
-    formatter="coqui", meta_file_train="metadata_train.csv", path="/content/output"
+    formatter="coqui", meta_file_train="metadata_train.txt", path="/content/output"
 )
 
 # INITIALIZE THE TRAINING CONFIGURATION
@@ -65,9 +65,8 @@ train_samples, eval_samples = load_tts_samples(
     dataset_config,
     eval_split=True,
     eval_split_max_size=config.eval_split_max_size,
-    eval_split_size=config.eval_split_size,
+    eval_split_size=0.034482758620689655,
 )
-
 
 # init speaker manager for multi-speaker training
 # it maps speaker-id to speaker-name in the model and data-loader
